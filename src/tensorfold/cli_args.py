@@ -68,6 +68,9 @@ def build_parser(handlers: dict[str, Callable[[argparse.Namespace], int]]) -> ar
     speed.add_argument("--mtp-drafts", type=int, default=None,
                        help="most MTP drafts a round (Qwen3.8 Flash Next: 3 on Mac; on CUDA 6, stopping under 70%% "
                             "confidence); 0: no MTP drafts (any family)")
+    speed.add_argument("--mtp-head", default="",
+                       help="the checkpoint's own MTP head as the drafter (Qwen3.8 dense; a file or directory of "
+                            "mtp.* tensors)")
     speed.add_argument("--mtp-confidence", type=float, default=None,
                        help="on CUDA, stop an MTP chain before a later draft under this probability "
                             "(Flash Next default 0.70)")
